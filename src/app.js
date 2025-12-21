@@ -18,8 +18,9 @@ app.use(
 );
 
 import healthCheckRouter from "./routes/healthCheck.routes.js";
-
+import authRouter from "./routes/auth.routes.js";
 app.use("/api/v1/healthcheck", healthCheckRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.get("/", (req, res) => {
   const data = req.body;
