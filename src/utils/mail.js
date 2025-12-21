@@ -9,8 +9,8 @@ const sendEmail = async (options) => {
       link: "https://sonu.drudh.tech",
     },
   });
-  const emailText = mailGenerator.generatePlaintext(options.mailgen.content);
-  const emailHTML = mailGenerator.generate(options.mailgen.content);
+  const emailText = mailGenerator.generatePlaintext(options.mailgenContent);
+  const emailHTML = mailGenerator.generate(options.mailgenContent);
 
   const transporter = nodemailer.createTransport({
     host: process.env.MAILTRAP_SMTP_HOST,
