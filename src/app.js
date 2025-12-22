@@ -1,12 +1,13 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 const app = express();
 
 // basic configurations
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
-
+app.use(cookieParser());
 //cors configuration
 app.use(
   cors({
@@ -24,7 +25,7 @@ app.use("/api/v1/auth", authRouter);
 
 app.get("/", (req, res) => {
   const data = req.body;
-  console.log("data", data);
+  // console.log("data", data);
   res.send("Welcome to baseCampy");
 });
 
