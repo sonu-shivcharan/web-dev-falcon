@@ -41,9 +41,16 @@ import authRouter from "./routes/auth.routes.js";
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api/v1/auth", authRouter);
 
+//global error handler
+app.use((error, _req, res, _next) => {
+  const status = error.statusCode || 500;
+  const message = error.message || "Something went wrong";
+  const errors = error.errors || [];
+  return res
+    .status(status)
+    .json({ statusCode: status, message, errors, success: false });
+});
 app.get("/", (req, res) => {
-  const data = req.body;
-  // console.log("data", data);
   res.send("Welcome to baseCampy");
 });
 
